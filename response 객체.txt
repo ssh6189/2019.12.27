@@ -1,0 +1,10 @@
+import requests
+
+resp = requests.get('http://naver.com')
+
+print(resp)
+resp.encoding
+
+resp = requests.get('http://finance.naver.com') #증권
+resp.encoding
+print(resp)

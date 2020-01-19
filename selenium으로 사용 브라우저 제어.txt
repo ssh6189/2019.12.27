@@ -1,0 +1,53 @@
+from selenium import webdriver 
+
+chrom_driver = webdriver.Chrome('C:/chromedriver_win32/chromedriver.exe')
+url = "http://www.naver.com/"
+# PhantomJS 드라이버 추출하기
+browser = webdriver.PhantomJS('C:/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe')
+# 3초 대기하기
+browser.implicitly_wait(3)
+# URL 읽어 들이기 
+browser.get(url)
+# 화면을 캡처해서 저장하기
+browser.save_screenshot("Website.png")
+# 브라우저 종료하기
+browser.quit()
+
+####################Selenium Chrome Driver 사용 브라우저 제어 실습 ###########################
+from selenium import webdriver 
+
+chrom_driver = webdriver.Chrome('C:/chromedriver_win32/chromedriver.exe')
+chrom_driver. implicitly_wait(3)
+chrom_driver.get("https://google.com")
+chrom_driver.save_screenshot("./output/Website2.png")
+chrom_driver.close()
+
+#웹사이트를 이미지로 캡처
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys  #텍스트 외에 특수 키를 입력하기 위한 모듈
+# # chromedriver = 'C:/tutorial/chromedriver.exe'    # 드라이버 생성 방법1 (selenium)
+# driver = webdriver.Chrome(chromedriver)
+driver = webdriver.PhantomJS('C:/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe') #드라이버 생성 방법2 (phantomJS)
+driver.get("http://www.python.org")
+print (driver.current_url)
+print (driver.title)
+elem = driver.find_element_by_name("q")
+# input 텍스트 초기화 
+elem.clear()
+# 키 이벤트 전송
+elem.send_keys("python")
+# 엔터 입력
+elem.send_keys(Keys.RETURN)
+driver.set_window_size(1400, 1000)
+elem.screenshot("C:/Users/student/Desktop/pycon_event.png") # 스크린샷도 찍기
+assert "No results found." not in driver.page_source
+driver.quit()
+
+from selenium import webdriver
+# PhantomJS 드라이버 추출하기
+browser = webdriver.PhantomJS('C:/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe')
+browser.implicitly_wait(3)
+# 적당한 웹 페이지 열기
+# 자바스크립트 실행하기
+r = browser.execute_script("return 100 + 50")
+print(r)
